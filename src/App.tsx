@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "./store";
+import { decrement, increment, incrementByAmount } from "./slice/counterSlice";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const counter = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <>
+      <h2>Hello World</h2>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <h2>Counter: {counter}</h2>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button onClick={() => dispatch(incrementByAmount(5))}>
+          Increment by 5
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <button onClick={() => dispatch(incrementByAmount(10))}>
+          Increment by 10
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(15))}>
+          Increment by 15
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(20))}>
+          Increment by 20
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(25))}>
+          Increment by 25
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(30))}>
+          Increment by 30
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(35))}>
+          Increment by 35
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(40))}>
+          Increment by 40
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(45))}>
+          Increment by 45
+        </button>
+        <button onClick={() => dispatch(incrementByAmount(50))}>
+          Increment by 50
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
